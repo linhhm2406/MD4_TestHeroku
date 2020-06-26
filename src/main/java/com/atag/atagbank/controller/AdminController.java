@@ -46,7 +46,7 @@ public class AdminController {
     IRoleService roleService;
 
     @Autowired
-    private BCryptPasswordEncoder passwordEncoder;
+    BCryptPasswordEncoder passwordEncoder;
 
     @Autowired
     IAccountService accountService;
