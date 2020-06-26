@@ -23,6 +23,7 @@ dependencies {
     implementation  'org.springframework.boot:spring-boot-starter-mail'
     implementation  'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
     implementation  'org.springframework.security:spring-security-web'
+    implementation  'org.springframework.security:spring-security'
     implementation  'org.springframework.security:spring-security-taglibs'
     implementation  'org.springframework.security:spring-security-config'
     implementation  'org.springframework.security:spring-security-core'
