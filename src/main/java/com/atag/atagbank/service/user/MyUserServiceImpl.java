@@ -17,6 +17,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
@@ -37,6 +38,7 @@ import java.util.Set;
 
 @Service
 @SessionAttributes("username")
+@Component
 public class MyUserServiceImpl implements MyUserService {
 //    @Autowired
 //    MyUserRepository myUserRepository;
