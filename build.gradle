@@ -26,6 +26,7 @@ dependencies {
     implementation  'org.springframework.security:spring-security-taglibs'
     implementation  'org.springframework.security:spring-security-config'
     implementation  'org.springframework.security:spring-security-core'
+    implementation 'org.postgresql:postgresql'
 
 
 
