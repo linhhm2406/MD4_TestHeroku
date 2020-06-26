@@ -1,0 +1,339 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <title>ATAGBANK</title>
+    <div th:fragment="header">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+        <link rel="stylesheet" th:href="@{fonts/icomoon/style.css}">
+
+        <link rel="stylesheet" th:href="@{css/bootstrap.min.css}">
+        <link rel="stylesheet" th:href="@{css/jquery-ui.css}">
+        <link rel="stylesheet" th:href="@{css/owl.carousel.min.css}">
+        <link rel="stylesheet" th:href="@{css/owl.theme.default.min.css}">
+        <link rel="stylesheet" th:href="@{css/owl.theme.default.min.css}">
+
+        <link rel="stylesheet" th:href="@{css/jquery.fancybox.min.css}">
+
+        <link rel="stylesheet" th:href="@{css/bootstrap-datepicker.css}">
+
+        <link rel="stylesheet" th:href="@{fonts/flaticon/font/flaticon.css}">
+
+        <link rel="stylesheet" th:href="@{css/aos.css}">
+
+        <link rel="stylesheet" th:href="@{css/style.css}">
+    </div>
+</head>
+<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+
+
+<div id="overlayer"></div>
+<div class="loader">
+    <div class="spinner-border text-primary" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
+</div>
+
+
+<div class="site-wrap">
+
+    <div class="site-mobile-menu site-navbar-target">
+        <div class="site-mobile-menu-header">
+            <div class="site-mobile-menu-close mt-3">
+                <span class="icon-close2 js-menu-toggle"></span>
+            </div>
+        </div>
+        <div class="site-mobile-menu-body"></div>
+    </div>
+
+    <div th:fragment="header-nav">
+        <header class="site-navbar js-sticky-header site-navbar-target" role="banner">
+
+            <div class="container">
+                <div class="row align-items-center">
+
+                    <div class="col-6 col-xl-2">
+                        <h1 class="mb-0 site-logo"><a href="index.html" class="h2 mb-0">ATAGBANK<span
+                                class="text-primary">.</span> </a></h1>
+                    </div>
+
+                    <div class="col-12 col-md-10 d-none d-xl-block">
+                        <nav class="site-navigation position-relative text-right" role="navigation">
+
+                            <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
+                                <li><a href="#home-section" class="nav-link" th:text="#{navibar.home}"></a></li>
+                                <li class="has-children">
+                                    <a href="#about-section" class="nav-link" th:text="#{navibar.about}"></a>
+                                    <ul class="dropdown">
+                                        <li><a href="#team-section" class="nav-link" th:text="#{navibar.team}"></a></li>
+                                        <li><a href="#pricing-section" class="nav-link" th:text="#{navibar.pricing}"></a></li>
+                                        <li><a href="#faq-section" class="nav-link" th:text="#{navibar.FAQ}"></a></li>
+                                        <li><a href="#gallery-section" class="nav-link" th:text="#{navibar.gallery}"></a></li>
+                                        <li><a href="#services-section" class="nav-link" th:text="#{navibar.services}"></a></li>
+                                        <li><a href="#testimonials-section" class="nav-link" th:text="#{navibar.testimonials}"></a></li>
+                                    </ul>
+                                </li>
+
+
+                                <li><a href="#contact-section" class="nav-link" th:text="#{navibar.contact}"></a></li>
+<!--                                <li class="social"><a href="#contact-section" class="nav-link"><span-->
+<!--                                        class="icon-facebook"></span></a></li>-->
+<!--                                <li class="social"><a href="#contact-section" class="nav-link"><span-->
+<!--                                        class="icon-twitter"></span></a></li>-->
+
+                                <li><a class="nav-link">|</a></li>
+                                <li class="social"><a href="?lang=en"><span>ENG</span></a></li>
+                                <li class="social"><a class="nav-link"><span>|</span></a></li>
+                                <li class="social"><a href="?lang=vi"><span>VI</span></a></li>
+                                <li>
+                                    <a th:if="${#session.getAttribute('currentUserName')==null}"
+                                       th:href="@{/registration}" class="nav-link" th:text="#{navibar.register}"></a>
+                                    <a th:if="${#session.getAttribute('currentUserName')!=null}" class="nav-link"
+                                       th:text="${#session.getAttribute('currentUserName')}"></a>
+                                </li>
+                                <li class="social"><a th:if="${#session.getAttribute('currentUserName')==null}" th:href="@{login}"
+                                       class="nav-link" th:text="#{navibar.login}"></a>
+                                    <a th:if="${#session.getAttribute('currentUserName')!=null}" th:href="@{logout}"
+                                       class="nav-link" th:text="#{navibar.logout}"></a></li>
+                                <li class="social"><a class="nav-link">|</a></li>
+                                <li class="social">
+                                    <a th:href="@{admin/customerManagement}" class="nav-link">Admin</a></li>
+
+                            </ul>
+                        </nav>
+                    </div>
+
+
+                    <div class="col-6 d-inline-block d-xl-none ml-md-0 py-3" style="position: relative; top: 3px;"><a
+                            href="#" class="site-menu-toggle js-menu-toggle float-right"><span
+                            class="icon-menu h3"></span></a>
+                    </div>
+
+                </div>
+            </div>
+        </header>
+    </div>
+
+
+    <div class="site-blocks-cover overlay" style="background-image: url(images/hero_2.jpg);" data-aos="fade"
+         id="home-section">
+
+        <div class="container">
+            <div class="row align-items-center justify-content-center">
+
+
+                <div class="col-md-10 mt-lg-5 text-center">
+                    <div class="single-text owl-carousel">
+
+                        <div class="slide">
+                            <h1 class="text-uppercase" data-aos="fade-up">Financing Solutions</h1>
+                            <p class="mb-5 desc" data-aos="fade-up" data-aos-delay="100">We’re taking action today to support businesses, communities and individuals, so we can all look forward to a better tomorrow.</p>
+                        </div>
+
+                        <div class="slide">
+                            <h1 class="text-uppercase" data-aos="fade-up">Your success is our business</h1>
+                            <p class="mb-5 desc" data-aos="fade-up" data-aos-delay="100">We’ve got the global network, deep expertise and innovative vision to meet all your banking needs and more</p>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <a href="#next" class="mouse smoothscroll">
+        <span class="mouse-icon">
+          <span class="mouse-wheel"></span>
+        </span>
+        </a>
+    </div>
+
+    <div class="site-section" id="next">
+        <div class="container">
+            <br>
+            <br>
+            <br>
+            <h2 style="text-align:  center" class="section-title mb-3" data-aos="fade-up" data-aos-delay="">Our
+                Services</h2>
+            <br>
+            <div class="row mb-5">
+                <div class="col-md-4 text-center" data-aos="fade-up" data-aos-delay="">
+                    <a th:href="@{/user/profile}"><img src="images/flaticon-svg/svg/001-wallet.png"
+                                                       alt="Free Website Template by Free-Template.co"
+                                                       class="img-fluid w-25 mb-4"></a>
+                    <a th:href="@{/user/profile}"><h3 class="card-title">Personals</h3></a>
+                </div>
+                <div class="col-md-4 text-center" data-aos="fade-up" data-aos-delay="200">
+                    <a th:href="@{/}"><img src="images/flaticon-svg/svg/002-rich.png"
+                                           alt="Free Website Template by Free-Template.co" class="img-fluid w-25 mb-4"></a>
+                    <a th:href="@{/}"><h3 class="card-title">Corporate</h3></a>
+                </div>
+                <div class="col-md-4 text-center" data-aos="fade-up" data-aos-delay="100">
+                    <a th:href="@{/}"><img src="images/flaticon-svg/svg/004-cart.svg"
+                                           alt="Free Website Template by Free-Template.co" class="img-fluid w-25 mb-4"></a>
+                    <a th:href="@{/}"><h3 class="card-title">Online Shopping</h3></a>
+                </div>
+            </div>
+            <div class="row mb-5">
+                <div class="col-md-4 text-center" data-aos="fade-up" data-aos-delay="">
+                    <a th:href="@{/}"><img src="images/flaticon-svg/svg/003-event.png"
+                                           alt="Free Website Template by Free-Template.co" class="img-fluid w-25 mb-4"></a>
+                    <a th:href="@{/}"><h3 class="card-title">News & Events</h3></a>
+                </div>
+                <div class="col-md-4 text-center" data-aos="fade-up" data-aos-delay="100">
+                    <a th:href="@{/}"><img src="images/flaticon-svg/svg/005-invest.png"
+                                           alt="Free Website Template by Free-Template.co" class="img-fluid w-25 mb-4"></a>
+                    <a th:href="@{/}"><h3 class="card-title">Investors</h3></a>
+                </div>
+                <div class="col-md-4 text-center" data-aos="fade-up" data-aos-delay="200">
+                    <a th:href="@{/}"><img src="images/flaticon-svg/svg/006-career.png"
+                                           alt="Free Website Template by Free-Template.co" class="img-fluid w-25 mb-4"></a>
+                    <a th:href="@{/}"><h3 class="card-title">Careers</h3></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="site-section border-bottom" id="team-section">
+        <div class="container">
+            <br>
+            <br>
+            <br>
+            <div class="row mb-5 justify-content-center">
+                <div class="col-md-8 text-center">
+                    <h2 class="section-title mb-3" data-aos="fade-up" data-aos-delay="">Meet Team</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="">
+                    <div class="team-member">
+                        <figure>
+                            <ul class="social">
+                                <li><a href="#"><span class="icon-facebook"></span></a></li>
+                                <li><a href="#"><span class="icon-twitter"></span></a></li>
+                                <li><a href="#"><span class="icon-linkedin"></span></a></li>
+                                <li><a href="#"><span class="icon-instagram"></span></a></li>
+                            </ul>
+                            <img src="/images/thinh.png" alt="Image" class="img-fluid">
+                        </figure>
+                        <div class="p-3">
+                            <h3>Bui Duc Thinh</h3>
+                            <span class="position">Team Leader</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="team-member">
+                        <figure>
+                            <ul class="social">
+                                <li><a href="#"><span class="icon-facebook"></span></a></li>
+                                <li><a href="#"><span class="icon-twitter"></span></a></li>
+                                <li><a href="#"><span class="icon-linkedin"></span></a></li>
+                                <li><a href="#"><span class="icon-instagram"></span></a></li>
+                            </ul>
+                            <img src="/images/binh.png" alt="Image" class="img-fluid">
+                        </figure>
+                        <div class="p-3">
+                            <h3>Nguyen Thai Binh</h3>
+                            <span class="position">Team Member</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="team-member">
+                        <figure>
+                            <ul class="social">
+                                <li><a href="#"><span class="icon-facebook"></span></a></li>
+                                <li><a href="#"><span class="icon-twitter"></span></a></li>
+                                <li><a href="#"><span class="icon-linkedin"></span></a></li>
+                                <li><a href="#"><span class="icon-instagram"></span></a></li>
+                            </ul>
+                            <img src="/images/huynh.png" alt="Image" class="img-fluid">
+                        </figure>
+                        <div class="p-3">
+                            <h3>Bui Xuan Huynh</h3>
+                            <span class="position">Team Member</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="team-member">
+                        <figure>
+                            <ul class="social">
+                                <li><a href="#"><span class="icon-facebook"></span></a></li>
+                                <li><a href="#"><span class="icon-twitter"></span></a></li>
+                                <li><a href="#"><span class="icon-linkedin"></span></a></li>
+                                <li><a href="#"><span class="icon-instagram"></span></a></li>
+                            </ul>
+                            <img src="/images/linh.png" alt="Image" class="img-fluid">
+                        </figure>
+                        <div class="p-3">
+                            <h3>Hoang Manh Linh</h3>
+                            <span class="position">Team Member</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="site-section bg-light" id="contact-section" data-aos="fade">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-12 text-center">
+                    <br>
+                    <br>
+                    <br>
+                    <h2 class="section-title mb-3">Contact Us</h2>
+                </div>
+            </div>
+            <div class="row mb-5">
+
+
+                <div class="col-md-4 text-center">
+                    <p class="mb-4">
+                        <span class="icon-room d-block h2 text-primary"></span>
+                        <span>MonCity, Tu Liem, Viet Nam</span>
+                    </p>
+                </div>
+                <div class="col-md-4 text-center">
+                    <p class="mb-4">
+                        <span class="icon-phone d-block h2 text-primary"></span>
+                        <a href="#">+1 232 3235 324</a>
+                    </p>
+                </div>
+                <div class="col-md-4 text-center">
+                    <p class="mb-0">
+                        <span class="icon-mail_outline d-block h2 text-primary"></span>
+                        <a href="#">services@atagbank.com</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div> <!-- .site-wrap -->
+
+<div th:fragment="jquery-js">
+    <script th:src="@{js/jquery-3.3.1.min.js}"></script>
+    <script th:src="@{js/jquery-ui.js}"></script>
+    <script th:src="@{js/popper.min.js}"></script>
+    <script th:src="@{js/bootstrap.min.js}"></script>
+    <script th:src="@{js/owl.carousel.min.js}"></script>
+    <script th:src="@{js/jquery.countdown.min.js}"></script>
+    <script th:src="@{js/jquery.easing.1.3.js}"></script>
+    <script th:src="@{js/aos.js}"></script>
+    <script th:src="@{js/jquery.fancybox.min.js}"></script>
+    <script th:src="@{js/jquery.sticky.js}"></script>
+    <script th:src="@{js/isotope.pkgd.min.js}"></script>
+    <script th:src="@{js/main.js}"></script>
+</div>
+
+</body>
+</html>

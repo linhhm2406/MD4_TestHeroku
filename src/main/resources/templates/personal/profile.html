@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout/dashboard-header.html::dashboard-header">
+</head>
+<body>
+<div class="wrapper d-flex align-items-stretch">
+    <nav th:replace="/layout/dashboard-left-side.html::dashboard-left-side">
+    </nav>
+
+    <!-- Page Content  -->
+    <div id="content" class="p-4 p-md-5">
+        <nav th:replace="/layout/dashboard-navibar.html::dashboard-navibar">
+        </nav>
+
+        <!--        SHOW PROFILE-->
+        <div id="profile" style="padding-top: 50px;">
+            <h2 class="mb-4 color-black-opacity-5">Profile</h2>
+            <th:block th:if="${message}">
+                <span th:text="${message}" class="alert alert-info" role="alert"></span>
+            </th:block>
+
+            <form method="post" th:object="${currentUser}" th:action="@{/user/profile}">
+                <table class="table table-hover">
+                    <tr>
+                        <td><input type="hidden" th:field="*{id}">
+                        <td><input type="hidden" th:field="*{role.id}" value="1">
+                        <td><input type="hidden" th:field="*{account.id}" value="1">
+                        <td><input type="hidden" th:field="*{enabled}" th:value="*{enabled}">
+                        <td><input type="hidden" th:field="*{password}" th:value="*{password}">
+                        <td><input type="hidden" th:field="*{confirmPassword}" th:value="*{confirmPassword}">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th style="width: 250px">Account Name</th>
+                        <td style="width: 750px"><input style="width: 750px; border: 1px lightgray solid" type="text" th:field="*{username}"></td>
+                    </tr>
+                    <tr>
+                        <th>Full Name</th>
+                        <td style="width: 750px"><input style="width: 750px; border: 1px lightgray solid" type="text" th:field="*{name}">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Address</th>
+                        <td style="width: 750px"><input style="width: 750px; border: 1px lightgray solid" type="text" th:field="*{address}">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Phone Number</th>
+                        <td style="width: 750px"><input style="width: 750px; border: 1px lightgray solid" type="text" th:field="*{phoneNumber}" >
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Email</th>
+                        <td style="width: 750px"><input style="width: 750px; border: 1px lightgray solid" type="text" th:field="*{email}">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Date Of Birth</th>
+                        <td style="width: 750px"><input style="width: 750px; border: 1px lightgray solid" type="text" th:field="*{dateOfBirth}">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><input type="submit" value="Change Information"></th>
+                        <th><a th:href="@{/user/deactivated/__${currentUser.id}__}">Deactivate account</a></th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th><a th:href="@{/user/changePassword}">Change Password</a></th>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div th:replace="/layout/dashboard-footer-js.html::dashboard-footer-js"></div>
+</body>
+</html>

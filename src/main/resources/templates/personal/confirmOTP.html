@@ -1,0 +1,44 @@
+<!--<!doctype html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head th:replace="/layout/dashboard-header.html::dashboard-header">-->
+<!--</head>-->
+<!--<body>-->
+<!--<div class="wrapper d-flex align-items-stretch">-->
+<!--    <nav th:replace="/layout/dashboard-left-side.html::dashboard-left-side">-->
+<!--    </nav>-->
+
+<!--    &lt;!&ndash; Page Content  &ndash;&gt;-->
+<!--    <div id="content" class="p-4 p-md-5">-->
+<!--        <nav th:replace="/layout/dashboard-navibar.html::dashboard-navibar">-->
+<!--        </nav>-->
+
+<!--        &lt;!&ndash;        SHOW PROFILE&ndash;&gt;-->
+<!--        <div id="otp" style="padding-top: 50px;">-->
+<!--            <h2 class="mb-4 color-black-opacity-5">OTP Confirm</h2>-->
+<!--            <p>You are in a transaction on ATAGBANK system, Please input OTP sent to complete transaction</p>-->
+<!--            <th:block th:if="${message}">-->
+<!--                <p th:text="${message}"></p>-->
+<!--                <a th:href="@{/transaction/create}">Continue to make transfer</a>-->
+<!--            </th:block>-->
+<!--            <th:block th:if="${errorMessage}">-->
+<!--                <p th:text="${errorMessage}"></p>-->
+<!--            </th:block>-->
+<!--            <form th:action="@{/validateOTP}" th:object="${otpCode}" id="otpConfirm" method="post">-->
+<!--                <table class="table table-hover">-->
+<!--                    <tr>-->
+<!--                        <th style="width: 150px;">OTP</th>-->
+<!--                        <td style="width: 550px"><input th:field="*{code}" style="width: 750px; border: 1px lightgray solid"-->
+<!--                                                        type="password"></td>-->
+<!--                    </tr>-->
+<!--                    <tr>-->
+<!--                        <th><input type="submit" value="Confirm"></th>-->
+<!--                    </tr>-->
+<!--                </table>-->
+<!--            </form>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--<div th:replace="/layout/dashboard-footer-js.html::dashboard-footer-js"></div>-->
+<!--</body>-->
+<!--</html>-->

@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout/dashboard-header.html::dashboard-header">
+</head>
+
+<body>
+    <div class="wrapper d-flex align-items-stretch">
+        <nav th:replace="/layout/dashboard-left-side.html::dashboard-left-side">
+        </nav>
+
+        <!-- Page Content  -->
+        <div id="content" class="p-4 p-md-5">
+            <nav th:replace="/layout/dashboard-navibar.html::dashboard-navibar">
+            </nav>
+
+            <!--        SHOW ACCOUNT BALANCE-->
+            <div id="accountBalance" style="padding-top: 50px;">
+                <h2 class="mb-4 color-black-opacity-5">Account Balance</h2>
+                <form action="">
+                    <!--                <input type="hidden" th:text="id">-->
+                    <table class="table table-hover">
+                        <tr>
+                            <th style="width: 250px">Account Number</th>
+                            <td colspan="4" style="width: 750px" th:text="${currentUser.getAccount().getId()}"></td>
+                        </tr>
+                        <tr>
+                            <th>Available balance (USD)</th>
+                            <td colspan="4" style="width: 750px" th:text="${currentUser.getAccount().getBalance()}"></td>
+                        </tr>
+                        <tr>
+                            <th></th>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div th:replace="/layout/dashboard-footer-js.html::dashboard-footer-js"></div>
+</body>
+</html>

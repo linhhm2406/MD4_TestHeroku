@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout/dashboard-header.html::dashboard-header">
+</head>
+<body>
+<div class="wrapper d-flex align-items-stretch">
+    <nav th:replace="/layout/dashboard-left-side.html::dashboard-left-side"></nav>
+
+    <!-- Page Content  -->
+    <div id="content" class="p-4 p-md-5">
+        <nav th:replace="/layout/dashboard-navibar::dashboard-navibar"></nav>
+
+        <!--        SHOW PROFILE-->
+        <div id="profile" style="padding-top: 50px;">
+            <h2 class="mb-4 color-black-opacity-5">Create Transaction</h2>
+
+            <th:block th:if="${message}">
+                <p th:text="${message}" style="color:green;font-style:italic"></p>
+            </th:block>
+            <th:block th:if="${errorMessage!=null}">
+                <p th:text="${errorMessage}" style="color:red;font-style:italic"></p>
+            </th:block>
+            <form th:action="@{/transaction/create}" th:object="${transaction}" method="post">
+                <table class="table-hover">
+                    <tr>
+                        <th>Receive Account Number</th>
+                        <td>
+                            <select th:field="*{account}">
+                                <option th:each="account:${accounts}" th:value="${account.id}"
+                                        th:text="${account.id}"></option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Amount</th>
+                        <td><input type="text" th:field="*{amount}" id="amount">
+                        <span id="validateMessage"></span></td>
+                    </tr>
+
+                    <tr>
+                        <th>Message</th>
+                        <td><input type="text" th:field="*{transactionMessage}"></td>
+                    </tr>
+
+                    <tr>
+                        <th>OTP Code</th>
+                        <td><input type="text" name="otp"></td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="2"><input type="submit" value="Send"></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>
+<div th:replace="/layout/dashboard-footer-js.html::dashboard-footer-js"></div>
+</body>
+</html>
+
+

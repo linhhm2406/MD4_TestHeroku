@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>ATAGBANK-Admin</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" th:href="@{personal/css/style.css}">
+</head>
+<body>
+<div class="wrapper d-flex align-items-stretch">
+    <nav id="sidebar" style="background: black; border-top: 2px black solid">
+        <div class="p-4 pt-5">
+            <a href="#" class="img logo rounded-0 mb-5"
+               th:style="'background-image:url(' + @{/personal/images/admin.jpg} + ');  width:180px; height:180px'"></a>
+            <ul th:replace="admin/customerManagement :: adminLeftSideBar"></ul>
+
+            <div class="footer">
+                <p>
+                    Copyright &copy;<script>document.write(new Date().getFullYear());</script>
+                    All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i>
+                    by <a
+                        href="https://atag.com" target="_blank">atag-copr.com.vn</a>
+                </p>
+            </div>
+
+        </div>
+    </nav>
+
+    <!-- Page Content  -->
+    <div id="content" class="p-4 p-md-5">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light"
+             style="position: absolute; top: 10px; width: 1300px; border: rgba(0,0,0,0.2) 1px solid;">
+            <div class="container-fluid">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" th:href="@{/}">Home</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <span class="nav-link">|</span>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><b>Admin</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <span class="nav-link">|</span>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/logout}"><b>Logout</b></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div id="profile" style="padding-top: 50px;">
+            <h2 class="mb-4 color-black-opacity-5">Create New Customer</h2>
+            <p style="color: blue" th:if="${announceSuccess!=null}" th:text="${announceSuccess}"></p>
+            <div>
+                <a class="btn btn-outline-dark" th:href="@{/admin/customerManagement}" style="float: left">Back To List</a>
+            </div>
+            <form th:action="@{/admin/createNewCustomer}" method="post" th:object="${user}">
+                <input type="hidden" th:field="*{id}" th:value="0">
+                <input type="hidden" th:field="*{account.id}" th:value="0">
+                <table class="table table-hover">
+                    <tr>
+                        <th style="width: 250px">Account Name</th>
+                        <td style="width: 750px"><input style="width: 750px; border: 1px lightgray solid" type="text" th:field="*{username}"></td>
+                        <td th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></td>
+                        <td th:if="${announce!=null}" th:text="${announce}"></td>
+                    </tr>
+                    <tr>
+                        <th>Password</th>
+                        <td style="width: 750px"><input style="width: 750px; border: 1px lightgray solid"type="password" th:field="*{password}"></td>
+                        <td th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></td>
+                    </tr>
+                    <tr>
+                        <th>Confirm Password</th>
+                        <td style="width: 750px"><input style="width: 750px; border: 1px lightgray solid"type="password" th:field="*{confirmPassword}"></td>
+                        <td th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}"></td>
+                    </tr>
+                    <tr>
+                        <th>Bank Account Number</th>
+                        <td style="width: 750px">Will be automaticaly genrated</td>
+                    </tr>
+                    <tr>
+                        <th>Full Name</th>
+                        <td style="width: 750px"><input style="width: 750px; border: 1px lightgray solid" type="text" th:field="*{name}"></td>
+                        <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></td>
+                    </tr>
+                    <tr>
+                        <th>Address</th>
+                        <td style="width: 750px"><input style="width: 750px; border: 1px lightgray solid" type="text" th:field="*{address}"></td>
+                        <td th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></td>
+                    </tr>
+                    <tr>
+                        <th>Phone Number</th>
+                        <td style="width: 750px"><input style="width: 750px; border: 1px lightgray solid" type="text" th:field="*{phoneNumber}"></td>
+                        <td th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></td>
+                    </tr>
+                    <tr>
+                        <th>Email</th>
+                        <td style="width: 750px"><input style="width: 750px; border: 1px lightgray solid" type="email" th:field="*{email}"></td>
+                        <td th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></td>
+                    </tr>
+                    <tr>
+                        <th>Date Of Birth</th>
+                        <td style="width: 750px"><input style="width: 750px; border: 1px lightgray solid" type="text" th:field="*{dateOfBirth}"></td>
+                        <td th:if="${#fields.hasErrors('dateOfBirth')}" th:errors="*{dateOfBirth}"></td>
+                    </tr>
+                    <tr>
+                        <th>Role</th>
+                        <td><select th:field="*{role}">
+                            <option th:each="r : ${roleList}"
+                                    th:value="${r.getId()}"
+                                    th:text="${r.role}"></option>
+                        </select></td>
+                    </tr>
+                    <tr>
+                        <th>Status</th>
+                        <td><select th:field="*{enabled}">
+                            <option selected th:value="true" th:text="Activated"></option>
+                            <option th:value="false" th:text="Deactivated"></option>
+                        </select></td>
+                    </tr>
+                    <tr>
+                        <th><input class="btn btn-outline-dark" type="submit" value="Create"></th>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script th:src="@{personal/js/jquery.min.js}"></script>
+<script th:src="@{personal/js/popper.js}"></script>
+<script th:src="@{personal/js/bootstrap.min.js}"></script>
+<script th:src="@{personal/js/main.js}"></script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link rel="stylesheet" th:href="@{/login/css/style.css}">
+</head>
+<body>
+
+
+<div class="container">
+    <div class="card card-container">
+        <span th:text="'A verification email has been sent to: ' + ${email}"></span>
+        <div>
+            <div class="form-group">
+                <form th:action="@{/}" method="get">
+                    <button type="submit" class="btn btn-lg btn-primary btn-block btn-signin">Back to Home Page</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

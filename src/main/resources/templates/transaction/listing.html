@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout/dashboard-header.html::dashboard-header">
+</head>
+<body>
+<div class="wrapper d-flex align-items-stretch">
+    <nav th:replace="/layout/dashboard-left-side.html::dashboard-left-side"></nav>
+    <div id="content" class="p-4 p-md-5">
+        <nav th:replace="/layout/dashboard-navibar::dashboard-navibar"></nav>
+
+        <div id="profile" style="padding-top: 50px;">
+            <h2 class="mb-4 color-black-opacity-5">Transaction Listing</h2>
+            <table class="table table-hover">
+                <thead>
+                <th>Id</th>
+                <th>Partner Account</th>
+                <th>Amount</th>
+                <th>Time</th>
+                <th>Type of Transaction</th>
+                <th>Message</th>
+                </thead>
+                <tbody>
+                <tr th:each="transaction:${transactions}">
+                    <td th:text="${transaction.id}"></td>
+                    <td th:text="${transaction.partnerAccount}"></td>
+                    <td th:text="${transaction.amount}"></td>
+                    <td th:text="${transaction.time}"></td>
+                    <td th:text="${transaction.type}"></td>
+                    <td th:text="${transaction.transactionMessage}"></td>
+                </tr>
+                </tbody>
+            </table>
+            <div th:replace="/layout/dashboard-pagination.html::pagination">
+            </div>
+        </div>
+    </div>
+</div>
+<div th:replace="/layout/dashboard-footer-js.html::dashboard-footer-js"></div>
+</body>
+</html>

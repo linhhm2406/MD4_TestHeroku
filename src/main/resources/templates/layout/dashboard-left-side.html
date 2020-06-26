@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+    </head>
+    <body>
+        <nav th:fragment="dashboard-left-side" id="sidebar" style="background: black; border-top: 2px black solid">
+            <div class="p-4 pt-5">
+                <a href="#" class="img logo rounded-0 mb-5"
+                   th:style="'background-image:url(' + @{/personal/images/logo.jpg} + ');  width:180px; height:180px'"></a>
+                <ul class="list-unstyled components mb-5">
+                    <li class="active">
+                        <a href="/user/profile" id="">Profile</a>
+                    </li>
+                    <li>
+                        <a href="/user/checkBalance">Check Account Balance</a>
+                    </li>
+                    <li>
+                        <a th:href="@{/transaction/listing}">Transfer History</a>
+                    </li>
+                    <li>
+                        <a th:href="@{/transaction/create}">Transfer To Another Account</a>
+                    </li>
+                    <li>
+                        <a href="#">Contact</a>
+                    </li>
+
+                </ul>
+                <div class="footer">
+                    <p>
+                        Copyright &copy;<script>document.write(new Date().getFullYear());</script>
+                        All rights reserved | This template is made with
+                        <i class="icon-heart" aria-hidden="true"></i>
+                        by
+                        <a
+                                href="https://atag.com" target="_blank">atag-copr.com.vn
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </nav>
+    </body>
+</html>
